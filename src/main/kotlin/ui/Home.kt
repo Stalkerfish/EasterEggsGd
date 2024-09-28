@@ -13,7 +13,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ui.GodotBridge
+import ui.GodotLauncher
 
 
 @Composable
@@ -129,7 +129,7 @@ fun home (onNavigate: (Room) -> Unit) {
 }
 
 fun launchGodotGame() {
-    GodotBridge.launchGodotGame()
+    GodotLauncher.launchGodotGame()
 }
 
 @Preview
