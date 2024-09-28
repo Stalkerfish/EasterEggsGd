@@ -129,7 +129,7 @@ fun home (onNavigate: (Room) -> Unit) {
 }
 
 fun launchGodotGame() {
-    GodotLauncher.launchGodotGame()
+    GodotLauncher.launchGodotGame("scenes/player.tscn")
 }
 
 @Preview

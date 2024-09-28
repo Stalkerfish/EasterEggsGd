@@ -13,9 +13,13 @@ object GodotLauncher {
         try {
             val build = connection.newBuild()
             build.forTasks("launchGodot")
+
+            val arguments = mutableListOf<String>()
             if (scene != null) {
-                build.setEnvironmentVariables(mapOf("GODOT_SCENE" to scene))
+                arguments.add("-Pscene=$scene")
             }
+
+            build.withArguments(arguments)
             build.run()
         } finally {
             connection.close()

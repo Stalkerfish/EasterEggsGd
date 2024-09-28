@@ -86,27 +86,17 @@ tasks.register("launchGodot") {
 
         val scene = project.findProperty("scene") as String?
         val command = mutableListOf(godotExecutablePath, "--path", projectDir.absolutePath)
-        scene?.let { command.add(it) }
+        if (scene != null) {
+            println("Launching Godot with scene: $scene")
+            command.add(scene)
+        } else {
+            println("Launching Godot without a specific scene")
+        }
 
         exec {
             commandLine(command)
             workingDir = projectDir
         }
-    }
-}
-
-tasks.register("runGodotScene") {
-    dependsOn("downloadGodot")
-    doLast {
-        val scene = project.findProject("scene") as? String
-        if (scene != null) {
-            exec {
-                workingDir = projectDir
-                commandLine(godotExecutablePath, "--path", projectDir.absolutePath, scene)
-            }
-        } else
-            throw GradleException("Please specify a scene using -Pscene=path/to/scene.tscn")
-
     }
 }
 
