@@ -13,6 +13,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import ui.GodotLauncher
 
 
@@ -128,8 +131,11 @@ fun home (onNavigate: (Room) -> Unit) {
     }
 }
 
+@OptIn(DelicateCoroutinesApi::class)
 fun launchGodotGame() {
-    GodotLauncher.launchGodotGame("scenes/player.tscn")
+    GlobalScope.launch {
+        GodotLauncher.launchGodotGame("scenes/player.tscn")
+    }
 }
 
 @Preview
