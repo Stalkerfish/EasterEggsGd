@@ -19,7 +19,7 @@ class Player: CharacterBody2D() {
 		playerMovement(delta)
 	}
 
-	// Called when the node enters the scene tree for the first time.
+	// Called when the node enters the scene dex.getTree for the first time.
 	@RegisterFunction
 	override fun _ready() {
 		animation = getNode(NodePath("AnimatedSprite2D")) as AnimatedSprite2D

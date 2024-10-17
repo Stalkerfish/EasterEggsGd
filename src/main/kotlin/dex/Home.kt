@@ -1,3 +1,5 @@
+package dex
+
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,11 +18,9 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import ui.GodotLauncher
-
 
 @Composable
-fun home (onNavigate: (Room) -> Unit) {
+fun Home (onNavigate: (Room) -> Unit) {
 
     MaterialTheme {
         Column(
@@ -99,7 +99,7 @@ fun home (onNavigate: (Room) -> Unit) {
                             .padding(8.dp) // Adjust this based on your layout needs
                             .clickable {
                                 launchGodotGame()
-                                val orb = Orb(Room.App, Room.App.name, onNavigate)
+                                val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                                 items.add(orb)
                             }
                     )
@@ -142,6 +142,6 @@ fun launchGodotGame() {
 @Composable
 fun PreviewHome() {
     // Provide a mock function for onNavigate
-    home(onNavigate = {
+    Home(onNavigate = {
     })
 }

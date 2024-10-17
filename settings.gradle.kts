@@ -1,4 +1,4 @@
-rootProject.name = "godot-kotlin-template"
+rootProject.name = "EasterEggs"
 
 pluginManagement {
     repositories {

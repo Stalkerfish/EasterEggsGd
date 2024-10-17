@@ -1,3 +1,6 @@
+package dex
+
+import TableOfElements
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import awesome_dialog.AwesomeCustomDialog
 import awesome_dialog.AwesomeCustomDialogType
+import dex.*
 import kotlin.random.Random
 
 @Composable
@@ -65,7 +69,7 @@ fun WhatIsTheElement (onNavigate: (Room) -> Unit) {
                 onValueChange = { textState = it },
                 label = { Text("What is the element?") },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedLabelColor = Jade, // Color for the hint when focused (Jade color)
+                    focusedLabelColor = Jade, // Color for the hint when focused (dex.getJade color)
                     unfocusedLabelColor = Color.White,  // Color for the hint when not focused
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Jade
@@ -101,22 +105,22 @@ fun WhatIsTheElement (onNavigate: (Room) -> Unit) {
                         successDialog.value = true
 
                         if (timesClicked >= 3) {
-                            val orb = Orb(Room.App, Room.App.name, onNavigate)
+                            val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                             inventory.addItem(orb)
                         }
                         if (timesClicked == 2) {
-                            val orb = Orb(Room.App, Room.App.name, onNavigate)
+                            val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                             inventory.addItem(orb)
                             inventory.addItem(orb)
                         }
                         if (timesClicked == 1) {
-                            val orb = Orb(Room.App, Room.App.name, onNavigate)
+                            val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                             inventory.addItem(orb)
                             inventory.addItem(orb)
                             inventory.addItem(orb)
                         }
                         if (timesClicked == 0) {
-                            val orb = Orb(Room.App, Room.App.name, onNavigate)
+                            val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                             inventory.addItem(orb)
                             inventory.addItem(orb)
                             inventory.addItem(orb)

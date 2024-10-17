@@ -1,3 +1,5 @@
+package dex
+
 import androidx.compose.ui.graphics.Color
 
 val RoseRed = Color(0xFFB9314F)

@@ -1,5 +1,7 @@
+package dex
+
 data class Orb(
-    override val locus: Room,  // Instead of a Class, use a Room identifier
+    override val locus: Room,  // Instead of a Class, use a dex.Room identifier
     override val name: String = locus.name,
     val onNavigate: (Room) -> Unit
 ) : Item() {

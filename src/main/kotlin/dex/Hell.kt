@@ -1,5 +1,6 @@
+package dex
+
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -7,7 +8,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun app(onNavigate: (Room) -> Unit) {
+fun Hell(onNavigate: (Room) -> Unit) {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth()
@@ -47,8 +47,8 @@ fun app(onNavigate: (Room) -> Unit) {
 
 @Preview
 @Composable
-fun PreviewApp() {
+fun PreviewHell() {
     // Provide a mock function for onNavigate
-    app(onNavigate = {
+    Hell(onNavigate = {
     })
 }

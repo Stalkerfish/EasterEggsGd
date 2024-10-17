@@ -1,3 +1,5 @@
+package dex
+
 import androidx.compose.animation.core.*
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Canvas
@@ -296,7 +298,7 @@ fun AnimatedNavigationBar(modifier: Modifier = Modifier, onNavigate: (Room) -> U
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AnimatedNavigationIcon("Home", selectedItem == "Home", { selectedItem = "Home"; onNavigate(Room.HOME) })
+        AnimatedNavigationIcon("Home", selectedItem == "Home", { selectedItem = "Home"; onNavigate(Room.Home) })
         AnimatedNavigationIcon("Earth", selectedItem == "Earth", { selectedItem = "Earth"; onNavigate(Room.EARTH) })
         AnimatedNavigationIcon("Settings", selectedItem == "Settings", { selectedItem = "Settings"; onNavigate(Room.Settings) })
     }

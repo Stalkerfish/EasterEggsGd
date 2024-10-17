@@ -1,7 +1,7 @@
 package awesome_dialog
 
-import ErrorColor
-import SuccessColor
+import dex.ErrorColor
+import dex.SuccessColor
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

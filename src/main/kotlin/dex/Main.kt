@@ -1,3 +1,6 @@
+package dex
+
+import WhatIsTheElement
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,8 +29,8 @@ fun main() = application {
 @Composable
 fun NavigationHost(currentScreen: Room, onNavigate: (Room) -> Unit) {
     when (currentScreen) {
-        Room.HOME -> home(onNavigate = onNavigate)
-        Room.App -> app(onNavigate = onNavigate)
+        Room.Home -> Home(onNavigate = onNavigate)
+        Room.Hell -> Hell(onNavigate = onNavigate)
         Room.EARTH -> Earth(onNavigate = onNavigate)
         Room.Settings -> TODO()
         Room.ElementsQuiz -> WhatIsTheElement(onNavigate = onNavigate)
@@ -35,5 +38,5 @@ fun NavigationHost(currentScreen: Room, onNavigate: (Room) -> Unit) {
 }
 
 enum class Room {
-    App, HOME, EARTH, Settings, ElementsQuiz
+    Hell, Home, EARTH, Settings, ElementsQuiz
 }

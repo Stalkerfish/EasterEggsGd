@@ -383,7 +383,7 @@ object TableOfElements {
             family = "Non-Metal",
             atomicNumber = 35,
             atomicWeight = 79.904,
-            description = "A red-brown liquid at room temperature, used in flame retardants and some medicines."
+            description = "A red-brown liquid at dex.getRoom temperature, used in flame retardants and some medicines."
         )
         elementsList.add(bromine)
 
@@ -851,7 +851,7 @@ object TableOfElements {
 
         val platinum = Element(
             id = 77,
-            name = "Platinum",
+            name = "dex.getPlatinum",
             symbol = "Pt",
             family = "Transition Metal",
             atomicNumber = 78,
@@ -878,7 +878,7 @@ object TableOfElements {
             family = "Transition Metal",
             atomicNumber = 80,
             atomicWeight = 200.59,
-            description =  "A liquid at room temperature, once used in thermometers, but now mostly phased out due to toxicity."
+            description =  "A liquid at dex.getRoom temperature, once used in thermometers, but now mostly phased out due to toxicity."
         )
         elementsList.add(mercury)
 

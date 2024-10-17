@@ -1,3 +1,5 @@
+package dex
+
 class Inventory {
     private val items: MutableList<Item> = mutableListOf()
 
