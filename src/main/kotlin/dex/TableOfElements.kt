@@ -1,3 +1,5 @@
+package dex
+
 object TableOfElements {
     fun getElement(): ArrayList<Element>{
         val elementsList = ArrayList<Element>()
