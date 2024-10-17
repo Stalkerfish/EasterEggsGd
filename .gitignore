@@ -12,3 +12,14 @@ jre-amd64/
 graal/
 *.log
 src/main/resources/META-INF/services/
+/src/main/resources/drawable/abyssal_lottery.svg.import
+/src/main/resources/drawable/chevron-down.svg.import
+/src/main/resources/drawable/Control-V.png.import
+/src/main/resources/drawable/Control-V.svg.import
+/src/main/resources/drawable/dantes_inferno.svg.import
+/src/main/resources/drawable/gamepad.svg.import
+/src/main/resources/drawable/hell_entrance.svg.import
+/src/main/resources/drawable/home.svg.import
+/src/main/resources/drawable/satans_lair.svg.import
+/src/main/resources/drawable/trophy.svg.import
+/src/main/resources/drawable/user.svg.import
