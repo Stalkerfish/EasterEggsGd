@@ -1,6 +1,7 @@
 package com.alliwonka.dexapp
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -41,8 +42,20 @@ class HomeActivity : ComponentActivity() {
 
     private val items = mutableListOf<Item>()
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                // Set the content to appear under the system bars so that the
+                // content doesn't resize when the system bars hide and show.
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                // Hide the nav bar and status bar
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+
+
         enableEdgeToEdge()
         setContent {
             DexAppTheme {
@@ -112,7 +125,7 @@ class HomeActivity : ComponentActivity() {
                 contentDescription = "Button Background",
                 contentScale = ContentScale.FillBounds, // Fill the entire box
                 modifier = Modifier
-                    .padding(8.dp) // Adjust this based on your layout needs
+                    .padding(8.dp)
                     .clickable {
                         val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                         items.add(orb)
