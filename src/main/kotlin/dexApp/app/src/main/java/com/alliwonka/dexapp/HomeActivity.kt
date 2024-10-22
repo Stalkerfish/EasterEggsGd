@@ -32,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import com.alliwonka.dexapp.ui.theme.DexAppTheme
 import com.alliwonka.dexapp.ui.theme.GoogleSansBold
 import com.alliwonka.dexapp.ui.theme.HomeRoomTextStyle
@@ -127,8 +128,7 @@ class HomeActivity : ComponentActivity() {
                 modifier = Modifier
                     .padding(8.dp)
                     .clickable {
-                        val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
-                        items.add(orb)
+                        onPuzzleSolved(onNavigate)
                     }
             )
 
@@ -140,6 +140,12 @@ class HomeActivity : ComponentActivity() {
                 color = Platinum
             )
         }
+    }
+
+    private fun onPuzzleSolved(onNavigate: (Room) -> Unit) {
+        connectWebSocket(lifecycleScope)
+        val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
+        items.add(orb)
     }
 
     @Preview

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0" // Adjust version to match your Kotlin version
+
 }
 
 android {
@@ -44,12 +46,29 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += listOf(
+                "/META-INF/AL2.0",
+                "/META-INF/INDEX.LIST",
+                "/META-INF/LGPL2.1"
+            )
         }
     }
 }
 
 dependencies {
+
+    // Ktor Client for networking
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio) // Or use ktor-client-okhttp if you prefer
+    implementation(libs.ktor.client.websockets)
+    implementation(libs.kotlin.logging)
+
+    // For Android-specific Ktor client engine
+    implementation(libs.ktor.client.android)
+
+    // JSON serialization (if needed for JSON data parsing)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
