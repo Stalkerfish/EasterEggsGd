@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">dexApp</string>
+
+    <string name="easter_eggs">Easter Eggs</string>
+    <string name="intro">Every click is one more person in the world</string>
+    <string name="brew_a_person">Brew a person</string>
+    <string name="people_count">0</string> <!-- Consider using placeholders if dynamic -->
+    <string name="kill_a_person">Kill a person</string>
+
+    <!-- Hell-related strings -->
+    <string name="hell_gate_intro">You pissed someone off…</string>
+    <string name="devil_warning">Go on, you think your attitudes do not have consequences, son of a bitch</string>
+    <string name="second_devil_warning">You\'re gonna have what you deserve</string>
+    <string name="hell_intro">Welcome to hell, bastard!</string>
+
+    <!-- Room-related strings -->
+    <string name="welcome_to">Welcome to…</string>
+    <string name="the">THE</string>
+    <string name="room">ROOM</string>
+    <string name="can_you_visit_every_place_possible">Can you visit every place possible?</string>
+
+    <!-- Icon descriptions -->
+    <string name="twitter_icon">Twitter icon</string>
+    <string name="instagram_icon">Instagram icon</string>
+    <string name="github_icon">Github icon</string>
+
+    <!-- Easter egg related strings - Consider more descriptive names or comments -->
+    <string name="easter_egg_part1">E A S T E R</string>
+    <string name="easter_egg_part2">E G G S</string>
+    <string name="in">IN</string>
+    <string name="go">GO</string>
+
+    <!-- Navigation/Menu items -->
+    <string name="home_room">Home Room</string>
+    <string name="settings">SETTINGS</string>
+    <string name="bag">Bag</string>
+    <string name="inventory">Inventory</string> <!-- Avoid hardcoding package names -->
+    <string name="character">CHARACTER</string>
+    <string name="your_character">YOUR CHARACTER</string>
+    <string name="wardrobe">Wardrobe</string>
+
+    <!-- Game elements -->
+    <string name="increase_orbs">Increase Orbs</string>
+    <string name="there_is_no_orbs_here">There is no Orbs here!</string>
+    <string name="no_ideas_for_this_button_yet">No ideas for this button yet!</string>
+
+    <!-- Landscape elements -->
+    <string name="landscape">Landscape</string>
+    <string name="grass">grass</string>
+    <string name="tree">Tree</string>
+    <string name="sky">Sky</string>
+    <string name="sun">sun</string>
+    <string name="birds">Birds</string><!-- Earth room elements -->
+    <string name="earth_room">EARTH ROOM</string>
+    <string name="periodic_table_of_elements">The \nPeriodic \nTable of Elements</string>
+    <string name="hydrogen">Hydrogen</string>
+    <string name="what_is_the_element">Find out the element!</string>
+    <string name="play_with_the_elements">Play with the\n elements!</string>
+    <string name="empty_sign">Your inventory is empty!\n\nhint: Try finding out\nThe Element of the Day!</string>
+    <string name="not_implemented_yet">Not implemented yet!</string>
+    <string name="retrieve_an_item">Retrieve an item</string>
+    <string name="empty_bag_sign">Your backpack is empty!</string>
+    <string name="hidden_name">- - - - - - -</string>
+</resources>
