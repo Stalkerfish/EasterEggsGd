@@ -21,7 +21,6 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun Home (onNavigate: (Room) -> Unit) {
-
     MaterialTheme {
         Column(
             modifier = Modifier
@@ -29,7 +28,9 @@ fun Home (onNavigate: (Room) -> Unit) {
                 .fillMaxWidth()
                 .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val items = mutableListOf<Item>()
+
+            val inventory = HomeInventory.homeInventory
+            val items = inventory.getItems()
 
             Image(painterResource(resourcePath = "drawable/frame.png"), null)
 
@@ -68,7 +69,9 @@ fun Home (onNavigate: (Room) -> Unit) {
                 Column() {
                     Image(
                         painterResource(resourcePath = "drawable/bag.svg"), null,
-                        modifier = Modifier.padding(0.dp, 36.dp, 25.dp, 0.dp)
+                        modifier = Modifier
+                            .clickable { sendMessage("addOrb") }
+                            .padding(0.dp, 36.dp, 25.dp, 0.dp)
                     )
 
                     Text(
@@ -97,11 +100,7 @@ fun Home (onNavigate: (Room) -> Unit) {
                         contentScale = ContentScale.FillBounds, // Fill the entire box
                         modifier = Modifier
                             .padding(8.dp) // Adjust this based on your layout needs
-                            .clickable {
-                                launchGodotGame()
-                                val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
-                                items.add(orb)
-                            }
+                            .clickable { launchGodotGame() }
                     )
 
                     // Add the Button on top of the background image
@@ -120,11 +119,15 @@ fun Home (onNavigate: (Room) -> Unit) {
                 Image(painterResource(resourcePath = "drawable/book.svg"), null)
                 Image(
                     painterResource(resourcePath = "drawable/phone.svg"), null,
-                    modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp)
+                    modifier = Modifier
+                        .clickable { disconnectWebSocket() }
+                        .padding(38.dp, 0.dp, 10.dp, 0.dp)
                 )
                 Image(
                     painterResource(resourcePath = "drawable/settings.svg"), null,
-                    modifier = Modifier.padding(38.dp, 0.dp, 10.dp, 0.dp)
+                    modifier = Modifier
+                        .clickable { connectWebSocket(onNavigate) }
+                        .padding(38.dp, 0.dp, 10.dp, 0.dp)
                 )
             }
         }
@@ -134,7 +137,7 @@ fun Home (onNavigate: (Room) -> Unit) {
 @OptIn(DelicateCoroutinesApi::class)
 fun launchGodotGame() {
     GlobalScope.launch {
-        GodotLauncher.launchGodotGame("scenes/player.tscn")
+        GodotLauncher.launchGodotGame("scenes/main.tscn")
     }
 }
 
