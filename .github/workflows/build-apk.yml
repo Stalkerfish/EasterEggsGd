@@ -40,6 +40,7 @@ jobs:
     - name: Read version from file
       id: read_version
       run: |
+        cd src/main/kotlin/dexApp/app
         VERSION=$(cat version.txt)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
