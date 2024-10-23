@@ -66,7 +66,7 @@ jobs:
         uses: actions/create-release@v1
         with:
           tag_name: ${{ env.TAG }}
-          release_name: "APK Build v${{ env.TAG }}"
+          release_name: "dexApp Build ${{ env.TAG }}"
           body: "This is an automatically generated release containing the debug APK for version ${{ env.TAG }}."
           draft: false
           prerelease: false
