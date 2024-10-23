@@ -69,7 +69,8 @@ jobs:
           body: "This is an automatically generated release containing the debug APK for version ${{ env.TAG }}."
           draft: false
           prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the token here
 
       - name: Upload APK to GitHub release
         uses: actions/upload-release-asset@v1
