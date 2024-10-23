@@ -11,10 +11,26 @@ advancedVersioning {
     nameOptions {
         versionMajor(0)
         versionMinor(4)
+        versionBuild(1)
     }
     codeOptions { versionCodeType(VersionCodeType.GIT_COMMIT_COUNT)}
-    outputOptions { }
+    outputOptions {
+        renameOutput(true)
+        nameFormat("dexApp-DEBUG-\${versionName}")
+    }
 }
+
+tasks.register("writeVersionToFile") {
+    doLast {
+        val version = advancedVersioning.versionName
+        file("version.txt").writeText(version)
+    }
+}
+
+tasks.named("preBuild").configure {
+    dependsOn("writeVersionToFile")
+}
+
 
 android {
     namespace = "com.alliwonka.dexapp"
