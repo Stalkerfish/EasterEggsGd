@@ -24,6 +24,8 @@ dependencies {
     implementation("org.gradle:gradle-tooling-api:8.10.2")
     implementation("org.slf4j:slf4j-simple:1.7.32") // Simple SLF4J binding for console logging
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
 
 val godotVersion = "4.2.2"
