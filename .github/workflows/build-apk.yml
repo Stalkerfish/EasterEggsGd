@@ -33,7 +33,9 @@ jobs:
           ${{ runner.os }}-gradle-
 
     - name: Build APK (Debug)
-      run: ./gradlew assemble --no-daemon
+      run: |
+        cd src/main/kotlin/dexApp
+        ./gradlew assemble --no-daemon
 
     - name: Read version from file
       id: read_version
