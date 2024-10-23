@@ -6,19 +6,19 @@ fqName = godot.WebSocketServer
 relativeSourcePath = src/main/kotlin/godot/Server.kt
 baseType = Node
 supertypes = [
-    godot.Node,
+	godot.Node,
 	godot.Object,
 	godot.core.KtObject,
 	kotlin.Any
 ]
 signals = [
-    
+	
 ]
 properties = [
-    
+	
 ]
 functions = [
-    _ready,
+	_ready,
 	_process,
 	add_orb,
 	_exit_tree,
