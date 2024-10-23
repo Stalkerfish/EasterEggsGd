@@ -40,8 +40,8 @@ import com.alliwonka.dexapp.ui.theme.Platinum
 import com.alliwonka.dexapp.ui.theme.RoseRed
 
 class HomeActivity : ComponentActivity() {
-
-    private val items = mutableListOf<Item>()
+    
+    private val items = HomeInventory.homeInventory.getItems()
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,25 +96,28 @@ class HomeActivity : ComponentActivity() {
                     Spacer(Modifier.width(10.dp))
                     Bag()
                 }
-                MissionButton(onNavigate)
-                BottomIcons()
+                MissionButton()
+                BottomIcons(onNavigate)
             }
         }
     }
 
     @Composable
-    fun BottomIcons() {
+    fun BottomIcons(onNavigate: (Room) -> Unit) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
             Image(painterResource(R.drawable.book), null)
             Spacer(modifier = Modifier.width(5.dp))
-            Image(painterResource(R.drawable.phone), null)
+            Image(painterResource(R.drawable.phone), null,
+                Modifier.clickable { disconnectWebSocket() })
             Spacer(modifier = Modifier.width(5.dp))
-            Image(painterResource(R.drawable.settings), null)
+            Image(painterResource(R.drawable.settings), null,
+                Modifier.clickable { connectWebSocket(onNavigate) })
         }
     }
 
+    @Preview
     @Composable
-    fun MissionButton(onNavigate: (Room) -> Unit) {
+    fun MissionButton() {
         val backgroundPainter: Painter = painterResource(R.drawable.rectangle)
 
         Box(
@@ -125,11 +128,7 @@ class HomeActivity : ComponentActivity() {
                 painter = backgroundPainter,
                 contentDescription = "Button Background",
                 contentScale = ContentScale.FillBounds, // Fill the entire box
-                modifier = Modifier
-                    .padding(8.dp)
-                    .clickable {
-                        onPuzzleSolved(onNavigate)
-                    }
+                modifier = Modifier.padding(8.dp)
             )
 
             // Add the Button on top of the background image
@@ -140,18 +139,6 @@ class HomeActivity : ComponentActivity() {
                 color = Platinum
             )
         }
-    }
-
-    private fun onPuzzleSolved(onNavigate: (Room) -> Unit) {
-        connectWebSocket(lifecycleScope)
-        val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
-        items.add(orb)
-    }
-
-    @Preview
-    @Composable
-    fun PreviewMissionButton() {
-        MissionButton(onNavigate = {})
     }
 
     @Preview

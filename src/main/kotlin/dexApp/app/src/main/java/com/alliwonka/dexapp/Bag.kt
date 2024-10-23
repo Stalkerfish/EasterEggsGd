@@ -1,6 +1,7 @@
 package com.alliwonka.dexapp
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +17,8 @@ import com.alliwonka.dexapp.ui.theme.Timberwolf
 @Composable
 fun Bag() {
     Column {
-        Image(painterResource(R.drawable.bag), null)
+        Image(painterResource(R.drawable.bag), null,
+            Modifier.clickable { sendMessage("addOrb") })
         Text(
             text = stringResource(id = R.string.bag),
             fontSize = 18.sp,
