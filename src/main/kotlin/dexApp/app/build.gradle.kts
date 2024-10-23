@@ -56,20 +56,7 @@ android {
 }
 
 dependencies {
-
-    // Ktor Client for networking
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio) // Or use ktor-client-okhttp if you prefer
-    implementation(libs.ktor.client.websockets)
-    implementation(libs.kotlin.logging)
-
-    // For Android-specific Ktor client engine
-    implementation(libs.ktor.client.android)
-
-    // JSON serialization (if needed for JSON data parsing)
-    implementation(libs.ktor.client.serialization)
-    implementation(libs.kotlinx.serialization.json)
-
+    implementation(libs.okhttp)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
