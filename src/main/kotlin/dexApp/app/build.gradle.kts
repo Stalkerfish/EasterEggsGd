@@ -1,8 +1,19 @@
+import me.moallemi.gradle.advancedbuildversion.gradleextensions.VersionCodeType
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0" // Adjust version to match your Kotlin version
+    id("me.moallemi.advanced-build-version") version "3.0.0"
+}
 
+advancedVersioning {
+    nameOptions {
+        versionMajor(0)
+        versionMinor(4)
+    }
+    codeOptions { versionCodeType(VersionCodeType.GIT_COMMIT_COUNT)}
+    outputOptions { }
 }
 
 android {
@@ -13,8 +24,8 @@ android {
         applicationId = "com.alliwonka.dexapp"
         minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = advancedVersioning.versionCode
+        versionName = advancedVersioning.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
