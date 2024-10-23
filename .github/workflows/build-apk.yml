@@ -33,7 +33,9 @@ jobs:
           ${{ runner.os }}-gradle-
 
     - name: Build APK (Debug)
-      run: ./gradlew assembleDebug
+      run: |
+        ./gradlew tasks 
+        ./gradlew assembleDebug --no-daemon
 
     - name: Read version from file
       id: read_version
