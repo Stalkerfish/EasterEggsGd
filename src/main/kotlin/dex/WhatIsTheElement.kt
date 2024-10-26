@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import awesome_dialog.AwesomeCustomDialog
 import awesome_dialog.AwesomeCustomDialogType
-import dex.*
 import kotlin.random.Random
 
 @Composable
