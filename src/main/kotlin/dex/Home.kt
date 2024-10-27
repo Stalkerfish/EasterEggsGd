@@ -99,13 +99,24 @@ fun Home(onNavigate: (Room) -> Unit) {
                             .aspectRatio(1f)
                     ) {
                         val scalingFactor = 0.2
+                        val mapWidth = 1800/* original width of bright_archipelago.svg */
+                        val mapHeight = 1800/* original height of bright_archipelago.svg */
+                        val scaledMapWidth = mapWidth * scalingFactor
+                        val scaledMapHeight = mapHeight * scalingFactor
+
+                        val playerPositionX = (mapPosition.first * scalingFactor).dp
+                        val playerPositionY = (mapPosition.second * scalingFactor).dp
+
+                        val constrainedX = playerPositionX.coerceIn(0.dp, scaledMapWidth.dp)
+                        val constrainedY = playerPositionY.coerceIn(0.dp, scaledMapHeight.dp)
+
 
                         Image(
                             painter = painterResource("drawable/bright_archipelago.svg"),
                             contentDescription = Map,
                             modifier = Modifier.fillMaxSize().clickable {
                                 sendMessage("PlayerPosition")
-                                mapPosition = playerPosition
+                                mapPosition = Pair(playerPosition.first.coerceIn(0, mapWidth), playerPosition.second.coerceIn(0, mapHeight))
                                 println("playerPosition: $playerPosition")
                                 println("mapPosition: $mapPosition")
                             }
@@ -116,8 +127,8 @@ fun Home(onNavigate: (Room) -> Unit) {
                             contentDescription = "Player Position",
                             modifier = Modifier
                                 .offset(
-                                    x = (mapPosition.first * scalingFactor).dp,
-                                    y = (mapPosition.second * scalingFactor).dp
+                                    x = constrainedX,
+                                    y = constrainedY
                                 )
                                 .size(24.dp)
                         )
