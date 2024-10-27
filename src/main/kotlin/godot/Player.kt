@@ -1,6 +1,5 @@
 package godot
 
-import godot.CharacterBody2D
 import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
 import godot.core.NodePath
@@ -56,6 +55,26 @@ class Player: CharacterBody2D() {
 
 		velocity = directionVector // Set velocity with Vector2
 		moveAndSlide() // Move the player with the calculated velocity
+
+		sendPlayerPositionToServer()
+	}
+
+	@RegisterFunction
+	fun sendPlayerPositionToServer() {
+		val position = getPlayerPosition()
+		val x = position.x.toInt()
+		val y = position.y.toInt()
+
+		val positionMessage = "updatePosition:$x,$y"
+
+		val webSocketServer = getNode(NodePath("/root/ServerSocket")) as WebSocketServer
+
+		webSocketServer.sendMessage(positionMessage)
+	}
+
+	@RegisterFunction
+	fun getPlayerPosition(): Vector2 {
+		return globalPosition
 	}
 
 	@RegisterFunction

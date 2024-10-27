@@ -20,6 +20,7 @@ properties = [
 functions = [
     _ready,
 	_process,
+	send_message,
 	add_orb,
 	_exit_tree,
 	send_pong

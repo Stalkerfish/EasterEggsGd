@@ -12,73 +12,116 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.ResourceLoader
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+var playerPosition: Pair<Int, Int> = Pair(0,0)
+
 @Composable
-fun Home (onNavigate: (Room) -> Unit) {
+fun Home(onNavigate: (Room) -> Unit) {
     var showMap by remember { mutableStateOf(false) }
+    var mapPosition by remember { mutableStateOf(playerPosition) }
+
     MaterialTheme {
         Column(
             modifier = Modifier
                 .background(color = RoseRed)
-                .fillMaxWidth()
-                .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center
         ) {
-
             val inventory = HomeInventory.homeInventory
             val items = inventory.getItems()
 
-            Image(painterResource(resourcePath = "drawable/frame.png"), null,
-                modifier = Modifier.clickable { launchGodotGame() })
+            Image(
+                painterResource("drawable/frame.png"),
+                contentDescription = null,
+                modifier = Modifier.clickable { launchGodotGame() }
+            )
 
             Spacer(modifier = Modifier.height(15.dp))
 
             if (!showMap) {
-                Column() {
-                    Row(Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .padding(10.dp)) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Row(Modifier.padding(10.dp)) {
                         Title(home_room)
-                        Image(painterResource(resourcePath = "drawable/just_a_line.svg"), null,
-                            modifier = Modifier.align(Alignment.CenterVertically).padding(14.dp))}
-                    Row(modifier = Modifier.align(Alignment.Start).padding(10.dp)){
+                        Image(
+                            painterResource("drawable/just_a_line.svg"),
+                            contentDescription = null,
+                            modifier = Modifier.padding(14.dp)
+                        )
+                    }
+                    Row(Modifier.padding(10.dp)) {
                         HomeWidgets(items)
                     }
-                    MidButton(onClick = { showMap = true })
+                    MidButton(onClick = {
+                        showMap = true
+                        sendMessage("PlayerPosition")
+                        println("playerPosition: $playerPosition")
+                        println("mapPosition: $mapPosition")
+                    })
 
-                    Row(modifier = Modifier.padding(35.dp, 0.dp, 0.dp, 0.dp).align(Alignment.Start)) {
+                    Row(Modifier.padding(start = 35.dp)) {
                         BottomIcons(onNavigate)
                     }
                 }
-            }
-            else {
-                Column() {
-                    Row(Modifier
-                        .padding(top = 10.dp)
-                        .padding(horizontal = 24.dp)
-                        .align(Alignment.CenterHorizontally)
-                        .fillMaxWidth()) {
+            } else {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .padding(horizontal = 24.dp)
+                            .fillMaxWidth()
+                    ) {
                         Image(
-                            painterResource(resourcePath = "drawable/just_a_line.svg"), null,
+                            painterResource("drawable/just_a_line.svg"),
+                            contentDescription = null,
                             modifier = Modifier.align(Alignment.CenterVertically)
                         )
                         Title(Map)
                         Image(
-                            painterResource(resourcePath = "drawable/just_a_line.svg"), null,
+                            painterResource("drawable/just_a_line.svg"),
+                            contentDescription = null,
                             modifier = Modifier.align(Alignment.CenterVertically)
                         )
                     }
-                    Image(
-                        painterResource("drawable/bright_archipelago.svg"),
-                        Map, Modifier.padding(10.dp))
+                    Box(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .wrapContentSize()
+                            .aspectRatio(1f)
+                    ) {
+                        val scalingFactor = 0.2
+
+                        Image(
+                            painter = painterResource("drawable/bright_archipelago.svg"),
+                            contentDescription = Map,
+                            modifier = Modifier.fillMaxSize().clickable {
+                                sendMessage("PlayerPosition")
+                                mapPosition = playerPosition
+                                println("playerPosition: $playerPosition")
+                                println("mapPosition: $mapPosition")
+                            }
+                        )
+
+                        Icon(
+                            painter = painterResource("drawable/user.svg"),
+                            contentDescription = "Player Position",
+                            modifier = Modifier
+                                .offset(
+                                    x = (mapPosition.first * scalingFactor).dp,
+                                    y = (mapPosition.second * scalingFactor).dp
+                                )
+                                .size(24.dp)
+                        )
+                    }
 
                     Row(Modifier.fillMaxSize().padding(15.dp).padding(start = 5.dp),
                         Arrangement.spacedBy(15.dp)) {
@@ -107,6 +150,11 @@ fun Home (onNavigate: (Room) -> Unit) {
             }
         }
     }
+}
+
+fun updatePosition(newX: Int, newY: Int) {
+    playerPosition = Pair(newX, newY)
+    println(playerPosition)
 }
 
 @Preview
