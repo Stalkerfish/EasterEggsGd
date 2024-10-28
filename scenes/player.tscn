@@ -414,9 +414,11 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_vodtg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_4mxfy")
 animation = &"front_idle"
 
