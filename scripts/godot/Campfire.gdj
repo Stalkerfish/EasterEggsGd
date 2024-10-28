@@ -1,12 +1,12 @@
 // THIS FILE IS GENERATED! DO NOT EDIT OR DELETE IT. EDIT OR DELETE THE ASSOCIATED SOURCE CODE FILE INSTEAD
 // Note: You can however freely move this file inside your godot project if you want. Keep in mind however, that if you rename the originating source code file, this file will be deleted and regenerated as a new file instead of being updated! Other modifications to the source file however, will result in this file being updated.
 
-registeredName = Player
-fqName = godot.Player
-relativeSourcePath = src/main/kotlin/godot/Player.kt
-baseType = CharacterBody2D
+registeredName = Campfire
+fqName = godot.Campfire
+relativeSourcePath = src/main/kotlin/godot/Campfire.kt
+baseType = StaticBody2D
 supertypes = [
-    godot.CharacterBody2D,
+    godot.StaticBody2D,
 	godot.PhysicsBody2D,
 	godot.CollisionObject2D,
 	godot.Node2D,
@@ -23,10 +23,5 @@ properties = [
     
 ]
 functions = [
-    _physics_process,
-	_ready,
-	player_movement,
-	send_player_position_to_server,
-	get_player_position,
-	play_animation
+    _ready
 ]

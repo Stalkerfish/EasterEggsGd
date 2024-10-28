@@ -1,0 +1,130 @@
+[gd_scene load_steps=19 format=3 uid="uid://dhwy35s6tdm7"]
+
+[ext_resource type="Script" path="res://src/main/kotlin/godot/Campfire.kt" id="1_o34fs"]
+[ext_resource type="Texture2D" uid="uid://b877c2qaw0uu" path="res://art/fogueira.png" id="1_u2ufe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7x5m"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyqcx"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26h4r"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4owr"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g02k"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmu6d"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8bbe"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6ne2"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox5u5"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(2048, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeonj"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(2304, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j57b"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(2560, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev28o"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(2816, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h1q2"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(3072, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1jyd"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(3328, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flyyq"]
+atlas = ExtResource("1_u2ufe")
+region = Rect2(3584, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtp7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7x5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyqcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26h4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4owr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g02k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmu6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8bbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6ne2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox5u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeonj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j57b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev28o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h1q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1jyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flyyq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Campfire" type="StaticBody2D"]
+z_index = 2
+script = ExtResource("1_o34fs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wtp7a")
+frame = 9
+frame_progress = 0.718011
+offset = Vector2(-17, -20)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 12, 4, 12, 4, 11, 5, 11, 5, 10, 7, 10, 7, 11, 8, 11, 8, 12, 13, 12, 13, 11, 14, 11, 14, 10, 15, 10, 15, 9, 20, 9, 20, 8, 21, 8, 21, 7, 22, 7, 22, 6, 23, 6, 23, 2, 22, 2, 22, 1, 21, 1, 21, -1, 19, -1, 19, -3, 18, -3, 18, -4, 15, -4, 15, -5, 14, -5, -16, -5, -16, -4, -17, -4, -17, -3, -18, -3, -18, -2, -21, -2, -21, -1, -22, -1, -22, 1, -23, 1, -23, 6, -22, 6, -22, 7, -21, 7, -21, 8, -16, 8, -16, 10, -15, 10, -15, 11, -13, 11, -13, 12, -5, 12, -5, 11, -4, 11, -4, 10, -3, 10, -3, 11, -2, 11, -2, 12)

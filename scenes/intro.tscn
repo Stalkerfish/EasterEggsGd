@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://drxnkp8b02u5d"]
+
+[ext_resource type="Script" path="res://scripts/godot/intro.gd" id="1_p1iwb"]
+[ext_resource type="FontFile" uid="uid://oc3vtyl08wdc" path="res://src/main/resources/font/devilspeaks.ttf" id="3_ajkrg"]
+[ext_resource type="Texture2D" uid="uid://cao1y5kl1mo4k" path="res://art/headphones-svgrepo-com.svg" id="3_duopb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5murv"]
+font = ExtResource("3_ajkrg")
+font_size = 76
+
+[sub_resource type="Animation" id="Animation_jnod5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_xoaqn"]
+resource_name = "fade_in_out"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.5, 5, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.08, 0.08), Vector2(0.08, 0.08), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ox2p"]
+_data = {
+"RESET": SubResource("Animation_jnod5"),
+"fade_in_out": SubResource("Animation_xoaqn")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_p1iwb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -256.0
+offset_top = -320.0
+offset_right = 544.0
+offset_bottom = 480.0
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(400, 400)
+texture = ExtResource("3_duopb")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": ""
+},
+"slice_section": false
+}
+
+[node name="Label" type="Label" parent="TextureRect"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 455.167
+offset_right = 400.0
+offset_bottom = 618.167
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(400, 75)
+theme_override_font_sizes/font_size = 48
+text = "EasterEggs is better with headphones"
+label_settings = SubResource("LabelSettings_5murv")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_6ox2p")
+}

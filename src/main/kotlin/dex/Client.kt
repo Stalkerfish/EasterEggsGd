@@ -29,6 +29,13 @@ fun connectWebSocket(onNavigate: (Room) -> Unit) {
                     val orb = Orb(Room.Hell, Room.Hell.name, onNavigate)
                     addItemToInventory(orb)
                 }
+                else if (text.contains("updatePosition")) {
+                    val position = text.substringAfter(":")
+                    var x = position.substringBefore(",").toInt()
+                    var y = position.substringAfter(",").toInt()
+
+                    updatePosition(newX = x, newY = y)
+                }
             }
 
             override fun onMessage(webSocket: WebSocket, bytes: ByteString) {

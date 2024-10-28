@@ -11,13 +11,22 @@ config_version=5
 [application]
 
 config/name="EasterEggs"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/intro.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://art/icon.svg"
+
+[autoload]
+
+ServerSocket="*res://src/main/kotlin/godot/Server.kt"
 
 [display]
 
 window/stretch/scale=4.0
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [editor_plugins]
 

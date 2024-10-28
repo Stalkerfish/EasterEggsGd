@@ -37,9 +37,15 @@ class WebSocketServer : Node() {
 				when (message) {
 					"Ping" -> sendPong()
 					"addOrb" -> addOrb()
+					"PlayerPosition" -> Player().sendPlayerPositionToServer()
 				}
 			}
 		}
+	}
+
+	@RegisterFunction
+	fun sendMessage(string: String) {
+		socket?.sendText(string)
 	}
 
 	@RegisterFunction
