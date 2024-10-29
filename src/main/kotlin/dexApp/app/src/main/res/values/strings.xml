@@ -61,4 +61,5 @@
     <string name="retrieve_an_item">Retrieve an item</string>
     <string name="empty_bag_sign">Your backpack is empty!</string>
     <string name="hidden_name">- - - - - - -</string>
+    <string name="Map">Map</string>
 </resources>
