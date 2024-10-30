@@ -6,7 +6,7 @@ fqName = godot.Player
 relativeSourcePath = src/main/kotlin/godot/Player.kt
 baseType = CharacterBody2D
 supertypes = [
-    godot.CharacterBody2D,
+	godot.CharacterBody2D,
 	godot.PhysicsBody2D,
 	godot.CollisionObject2D,
 	godot.Node2D,
@@ -17,16 +17,15 @@ supertypes = [
 	kotlin.Any
 ]
 signals = [
-    
+	
 ]
 properties = [
-    
+	
 ]
 functions = [
-    _physics_process,
+	_physics_process,
 	_ready,
 	player_movement,
 	send_player_position_to_server,
-	get_player_position,
 	play_animation
 ]

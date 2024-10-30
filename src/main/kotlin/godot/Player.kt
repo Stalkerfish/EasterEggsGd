@@ -18,7 +18,6 @@ class Player: CharacterBody2D() {
 		playerMovement(delta)
 	}
 
-	// Called when the node enters the scene dex.getTree for the first time.
 	@RegisterFunction
 	override fun _ready() {
 		animation = getNode(NodePath("AnimatedSprite2D")) as AnimatedSprite2D
@@ -29,27 +28,31 @@ class Player: CharacterBody2D() {
 	fun playerMovement(delta: Double) {
 		var directionVector = Vector2.ZERO
 
-		if (Input.isActionPressed(StringName("ui_right"))) {
-			currentDirection = "right"
-			playAnimation(1)
-			directionVector.x = speed
+		when {
+			Input.isActionPressed(StringName("ui_right")) -> {
+				currentDirection = "right"
+				directionVector.x = speed
+			}
+			Input.isActionPressed(StringName("ui_left")) -> {
+				currentDirection = "left"
+				directionVector.x = -speed
+			}
+			Input.isActionPressed(StringName("ui_up")) -> {
+				currentDirection = "up"
+				directionVector.y = -speed
+			}
+			Input.isActionPressed(StringName("ui_down")) -> {
+				currentDirection = "down"
+				directionVector.y = speed
+			}
+			else -> {
+				playAnimation(0)
+			}
 		}
-		else if (Input.isActionPressed(StringName("ui_left"))) {
-			currentDirection = "left"
+
+		if (directionVector != Vector2.ZERO) {
 			playAnimation(1)
-			directionVector.x = -speed
-		}
-		else if (Input.isActionPressed(StringName("ui_up"))) {
-			currentDirection = "up"
-			playAnimation(1)
-			directionVector.y = -speed
-		}
-		else if (Input.isActionPressed(StringName("ui_down"))) {
-			currentDirection = "down"
-			playAnimation(1)
-			directionVector.y = speed
-		}
-		else {
+		} else {
 			playAnimation(0)
 		}
 
@@ -61,57 +64,31 @@ class Player: CharacterBody2D() {
 
 	@RegisterFunction
 	fun sendPlayerPositionToServer() {
-		val position = getPlayerPosition()
-		val x = position.x.toInt()
-		val y = position.y.toInt()
-
-		val positionMessage = "updatePosition:$x,$y"
+		val position = globalPosition
+		val positionMessage = "updatePosition:${position.x.toInt()},${position.y.toInt()}"
 
 		val webSocketServer = getNode(NodePath("/root/ServerSocket")) as WebSocketServer
-
 		webSocketServer.sendMessage(positionMessage)
 	}
 
 	@RegisterFunction
-	fun getPlayerPosition(): Vector2 {
-		return globalPosition
-	}
-
-	@RegisterFunction
 	fun playAnimation(movement: Int) {
-		val direction = currentDirection
-
-		when (direction) {
+		when (currentDirection) {
 			"right" -> {
 				animation.flipH = false
-				if (movement == 1)
-					animation.play(StringName("side_walk"))
-				else
-					animation.play(StringName("side_idle"))
+				animation.play(if (movement == 1) StringName("side_walk") else StringName("side_idle"))
 			}
-
 			"left" -> {
 				animation.flipH = true
-				if (movement == 1)
-					animation.play(StringName("side_walk"))
-				else
-					animation.play(StringName("side_idle"))
+				animation.play(if (movement == 1) StringName("side_walk") else StringName("side_idle"))
 			}
-
 			"up" -> {
 				animation.flipH = false
-				if (movement == 1)
-					animation.play(StringName("back_walk"))
-				else
-					animation.play(StringName("back_idle"))
+				animation.play(if (movement == 1) StringName("back_walk") else StringName("back_idle"))
 			}
-
 			"down" -> {
 				animation.flipH = false
-				if (movement == 1)
-					animation.play(StringName("front_walk"))
-				else
-					animation.play(StringName("front_idle"))
+				animation.play(if (movement == 1) StringName("front_walk") else StringName("front_idle"))
 			}
 		}
 	}

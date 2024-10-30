@@ -3,6 +3,7 @@ package godot
 import godot.annotation.RegisterClass
 import godot.annotation.RegisterFunction
 import godot.core.GodotError
+import godot.core.NodePath
 import godot.global.GD
 
 @RegisterClass
@@ -28,6 +29,7 @@ class WebSocketServer : Node() {
 				socket?.acceptStream(conn)
 			}
 		}
+
 		socket?.poll()
 
 		if (socket?.getReadyState() == WebSocketPeer.State.STATE_OPEN) {
@@ -37,7 +39,10 @@ class WebSocketServer : Node() {
 				when (message) {
 					"Ping" -> sendPong()
 					"addOrb" -> addOrb()
-					"PlayerPosition" -> Player().sendPlayerPositionToServer()
+					"PlayerPosition" -> {
+						val player = getNode(NodePath("/root/World/player")) as Player
+						player.sendPlayerPositionToServer()
+					}
 				}
 			}
 		}
@@ -57,6 +62,7 @@ class WebSocketServer : Node() {
 	override fun _exitTree() {
 		socket?.close()
 		tcpServer.stop()
+		socket = null
 	}
 
 	@RegisterFunction
